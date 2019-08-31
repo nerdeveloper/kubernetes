@@ -9,4 +9,4 @@ spec:
     protocol: TCP
   selector:
       app: helloworld-app
-  ype: LoadBalancer
+  type: LoadBalancer
