@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: helloworld-controller
+spec:
+  replicas: 2
+  selector:
+    app: helloworld
+  template:
+    metadata:
+      name: helloworld-controllers
+      labels:
+        app: helloworld
+    spec:
+      containers:
+        - name: nodejs
+          image: nerdeveloper/web
+          ports:
+            - containerPort: 3000
