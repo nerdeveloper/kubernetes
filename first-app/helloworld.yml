@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: helloworld
+  name: nodehelloworld
   labels:
-    name: helloworld
+    app: helloworld
 spec:
   containers:
   - name: nodejs
