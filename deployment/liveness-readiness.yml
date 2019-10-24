@@ -20,13 +20,13 @@ spec:
           containerPort: 3000
         livenessProbe: 
           httpGet:
-            path: /health
+            path: /
             port: nodejs-port
           initialDelaySeconds: 15
           timeoutSeconds: 30
         readinessProbe:
           httpGet:
-            path: /health
+            path: /
             port: nodejs-port
           initialDelaySeconds: 15
           timeoutSeconds: 30
