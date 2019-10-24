@@ -18,10 +18,6 @@ spec:
         ports:
         - name:  nodejs-port
           containerPort: 3000
-        resources:
-            limits:
-              memory: "256Mi"
-              cpu: "500m"
         livenessProbe: 
           httpGet:
             path: /health
