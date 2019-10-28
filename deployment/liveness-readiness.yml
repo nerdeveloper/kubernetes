@@ -49,7 +49,7 @@ spec:
     run: helloworld
   ports:
   - name: loadbalancer-port
-    port:  31001
+    port:  80
     nodePort: 31001
     protocol: TCP
     targetPort: 3000
