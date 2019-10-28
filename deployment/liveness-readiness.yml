@@ -61,7 +61,7 @@ metadata:
   namespace: default
 spec:
   rules:
-  - host: kubernetes.jefftutors.com
+  - host: peter.kubernetes.jefftutors.com
     http:
       paths:
       - path: /
