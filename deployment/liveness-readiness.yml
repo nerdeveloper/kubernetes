@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: helloworld
+  name: helloworld-deployment
 spec:
   replicas: 2
   selector:
@@ -50,7 +50,7 @@ spec:
   - name: loadbalance-port
     port: 80
     protocol: TCP
-    targetPort: nodejs-port
+    targetPort: 3000
   type: NodePort
 
 ---
@@ -58,7 +58,6 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: web-ingress
-  namespace: default
 spec:
   rules:
   - host: hello.kubernetes.jefftutors.com
