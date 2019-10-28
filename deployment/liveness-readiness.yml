@@ -13,11 +13,11 @@ spec:
         app: helloworld
     spec:
       containers:
-      - name: nodejs
-        image: nerdeveloper/web
+      - name: nginx
+        image: nginx:alpine
         ports:
         - name:  nodejs-port
-          containerPort: 3000
+          containerPort: 80
         livenessProbe: 
           httpGet:
             path: /
@@ -50,9 +50,8 @@ spec:
   ports:
   - name: loadbalancer-port
     port:  80
-    nodePort: 31001
     protocol: TCP
-    targetPort: 3000
+    targetPort: 80
   type: NodePort
 
 ---
@@ -63,7 +62,7 @@ metadata:
   namespace: default
 spec:
   rules:
-  - host: obi.kubernetes.jefftutors.com
+  - host: jeff.kubernetes.jefftutors.com
     http:
       paths:
       - path: /
