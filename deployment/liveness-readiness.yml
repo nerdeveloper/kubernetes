@@ -14,10 +14,10 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:alpine
+        image: nerdeveloper/web
         ports:
         - name:  nodejs-port
-          containerPort: 80
+          containerPort: 3000
         livenessProbe: 
           httpGet:
             path: /
@@ -48,16 +48,18 @@ spec:
     run: helloworld
   ports:
   - name: loadbalancer-port
-    port: 8080
+    port: 80
     protocol: TCP
-    targetPort: nodejs-port
+    targetPort: 3000
   type: LoadBalancer
 
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
+
 metadata:
   name: helloworld-ingress
+  namespace: default
 spec:
   rules:
   - host: obinna.kubernetes.jefftutors.com
@@ -66,4 +68,4 @@ spec:
       - path: /
         backend:
           serviceName: helloworld
-          servicePort: 8080
+          servicePort: 80
