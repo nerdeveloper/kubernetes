@@ -36,23 +36,23 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  name: helloworld-service
   labels:
     run: helloworld
-  name: helloworld
   annotations:
     haproxy.org/check: "enabled"
     haproxy.org/forwarded-for: "enabled"
     haproxy.org/load-balance: "roundrobin"
 spec:
   selector:
-    run: helloworld-
+    run: helloworld
   ports:
   - name: loadbalance-port
     port: 80
     protocol: TCP
     targetPort: nodejs-port
+  type: NodePort
 
----
 ---
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
