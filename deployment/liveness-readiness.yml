@@ -13,11 +13,11 @@ spec:
         app: helloworld
     spec:
       containers:
-      - name: nodejs
-        image: nerdeveloper/web
+      - name: nginx
+        image: nginx:alpine
         ports:
         - name:  nodejs-port
-          containerPort: 3000
+          containerPort: 80
         livenessProbe: 
           httpGet:
             path: /
@@ -36,7 +36,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: helloworld-service
+  name: helloworld
   labels:
     run: helloworld
   annotations:
