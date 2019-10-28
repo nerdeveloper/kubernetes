@@ -62,7 +62,7 @@ metadata:
   namespace: default
 spec:
   rules:
-  - host: obinna.kubernetes.jefftutors.com
+  - host: cake.kubernetes.jefftutors.com
     http:
       paths:
       - path: /
