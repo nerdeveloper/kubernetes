@@ -14,10 +14,10 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nerdeveloper/web
+        image: jmalloc/echo-server
         ports:
         - name:  nodejs-port
-          containerPort: 3000
+          containerPort: 8080
         livenessProbe: 
           httpGet:
             path: /
@@ -50,19 +50,18 @@ spec:
   - name: loadbalancer-port
     port: 80
     protocol: TCP
-    targetPort: 3000
+    targetPort: 8080
   type: LoadBalancer
 
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
-
 metadata:
   name: helloworld-ingress
   namespace: default
 spec:
   rules:
-  - host: cake.kubernetes.jefftutors.com
+  - host: a.kubernetes.jefftutors.com
     http:
       paths:
       - path: /
