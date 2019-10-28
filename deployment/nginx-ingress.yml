@@ -68,6 +68,22 @@ spec:
             successThreshold: 1
             timeoutSeconds: 1
 ---
+kind: Service
+apiVersion: v1
+metadata:
+  name: ingress-nginx
+spec:
+  type: LoadBalancer
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+    - name: https
+      port: 443
+      targetPort: https
+
+
+---
 kind: ConfigMap
 apiVersion: v1
 metadata:
