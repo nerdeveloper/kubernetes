@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: helloworld-deployment
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: helloworld
@@ -47,7 +47,7 @@ spec:
   selector:
     run: helloworld
   ports:
-  - name: loadbalance-port
+  - name: loadbalancer-port
     port: 80
     protocol: TCP
     targetPort: nodejs-port
