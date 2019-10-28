@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: helloworld-deployment
+  name: helloworld-readiness
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: helloworld
@@ -13,11 +13,11 @@ spec:
         app: helloworld
     spec:
       containers:
-      - name: nginx
-        image: nginx:alpine
+      - name: nodejs
+        image: nerdeveloper/web
         ports:
         - name:  nodejs-port
-          containerPort: 80
+          containerPort: 3000
         livenessProbe: 
           httpGet:
             path: /
@@ -30,42 +30,3 @@ spec:
             port: nodejs-port
           initialDelaySeconds: 15
           timeoutSeconds: 30
-
----
-
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: helloworld
-  labels:
-    run: helloworld
-  annotations:
-    haproxy.org/check: "enabled"
-    haproxy.org/forwarded-for: "enabled"
-    haproxy.org/load-balance: "roundrobin"
-spec:
-  selector:
-    run: helloworld
-  ports:
-  - name: loadbalancer-port
-    port:  80
-    protocol: TCP
-    targetPort: 80
-  type: NodePort
-
----
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: helloworld-ingress
-  namespace: default
-spec:
-  rules:
-  - host: jeff.kubernetes.jefftutors.com
-    http:
-      paths:
-      - path: /
-        backend:
-          serviceName: helloworld
-          servicePort: 80
