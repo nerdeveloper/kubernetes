@@ -60,7 +60,7 @@ metadata:
   name: helloworld-ingress
 spec:
   rules:
-  - host: hello.kubernetes.jefftutors.com
+  - host: wow.kubernetes.jefftutors.com
     http:
       paths:
       - path: /
