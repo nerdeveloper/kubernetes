@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: k8s-demo
-        image: wardviaene/k8s-demo:latest
+        image: nerdeveloper/web
         ports:
         - name: nodejs-port
           containerPort: 3000
