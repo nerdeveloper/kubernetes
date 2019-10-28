@@ -48,7 +48,7 @@ spec:
     run: helloworld
   ports:
   - name: loadbalancer-port
-    port: 80
+    port: 8080
     protocol: TCP
     targetPort: nodejs-port
   type: LoadBalancer
@@ -60,10 +60,10 @@ metadata:
   name: helloworld-ingress
 spec:
   rules:
-  - host: wow.kubernetes.jefftutors.com
+  - host: obinna.kubernetes.jefftutors.com
     http:
       paths:
       - path: /
         backend:
           serviceName: helloworld
-          servicePort: 80
+          servicePort: 8080
