@@ -5,7 +5,7 @@ metadata:
   namespace: dev
 spec:
   rules:
-  - host: block.kubernetes.jefftutors.com
+  - host: fish.kubernetes.jefftutors.com
     http:
       paths:
       - path: / 
