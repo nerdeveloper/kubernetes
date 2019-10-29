@@ -1,21 +1,13 @@
-kind: Service
-apiVersion: v1
+apiVersion: extensions/v1beta1
+kind: Ingress
 metadata:
-  name: ingress-nginx
-  namespace: ingress-nginx
-  labels:
-    app.kubernetes.io/name: ingress-nginx
-    app.kubernetes.io/part-of: ingress-nginx
+  name: helloworld-rules
 spec:
-  externalTrafficPolicy: Local
-  type: LoadBalancer
-  selector:
-    app.kubernetes.io/name: ingress-nginx
-    app.kubernetes.io/part-of: ingress-nginx
-  ports:
-    - name: http
-      port: 80
-      targetPort: http
-    - name: https
-      port: 443
-      targetPort: https
+  rules:
+  - host: block.kubernetes.jefftutors.com
+    http:
+      paths:
+      - path: / 
+        backend:
+          serviceName: hello-service
+          servicePort: 80
