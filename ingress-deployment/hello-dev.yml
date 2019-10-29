@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-dev
+  namespace: dev
+spec:
+  selector:
+    matchLabels:
+      app: hello-dev
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: hello-dev
+    spec:
+      containers:
+      - name: nodejs
+        image: nerdeveloper/web
+        ports:
+        - containerPort: 3000

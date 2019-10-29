@@ -12,3 +12,10 @@ spec:
         backend:
           serviceName: hello-service
           servicePort: 80
+  - host: block.kubernetes.jefftutors.com
+    http:
+      paths:
+      - path: / 
+        backend:
+          serviceName: hello--dev-service
+          servicePort: 80
