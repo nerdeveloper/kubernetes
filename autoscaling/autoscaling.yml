@@ -14,13 +14,15 @@ spec:
     spec:
       containers:
       - name: hpa-example
-        image: gcr.io/google_containers/hpa-example
+        image: nerdeveloper/web
         ports:
         - name: http-port
-          containerPort: 80
+          containerPort: 3000
         resources:
           requests:
             cpu: 200m
+          limits:
+            cpu: 500m
 ---
 apiVersion: v1
 kind: Service
@@ -36,7 +38,7 @@ spec:
     app: hpa-example
   type: NodePort
 ---
-apiVersion: autoscaling/v1
+apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
   name: hpa-example-autoscaler
@@ -47,4 +49,10 @@ spec:
     name: hpa-example
   minReplicas: 1
   maxReplicas: 10
-  targetCPUUtilizationPercentage: 50
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 50
