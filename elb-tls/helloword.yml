@@ -1,0 +1,19 @@
+Kind: apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloword-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: helloword-deployment
+  template:
+    metadata:
+      labels:
+        app: helloword-deployment
+    spec:
+      containers:
+      - name: helloword-deployment
+        image: nerdeveloper/web
+        ports:
+        - containerPort: 3000
