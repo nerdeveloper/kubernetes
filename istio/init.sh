@@ -1,0 +1,1 @@
+for ((i=1;i<=10;i++)); do curl a4cc8bba372684b04ac5f526e35e4aa8-1202387856.us-west-2.elb.amazonaws.com/ -H "Host: hello.example.com" ; done
