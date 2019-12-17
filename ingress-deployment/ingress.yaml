@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: helloworld-rules
+  namespace: dev
+spec:
+  rules:
+  - host: fish.kubernetes.jefftutors.com
+    http:
+      paths:
+      - path: / 
+        backend:
+          serviceName: hello-service
+          servicePort: 80
+  - host: block.kubernetes.jefftutors.com
+    http:
+      paths:
+      - path: / 
+        backend:
+          serviceName: hello--dev-service
+          servicePort: 80

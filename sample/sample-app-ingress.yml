@@ -1,0 +1,44 @@
+
+# apiVersion: extensions/v1beta1
+# kind: Ingress
+# metadata:
+#   name: blog
+#   labels:
+#     app: blog
+#   annotations:
+#     kubernetes.io/ingress.class: nginx
+ 
+# spec:
+#   rules:
+#       - http:
+#           paths: 
+#             - path: /
+#               backend:
+#                 serviceName: blog
+#                 servicePort: 80
+# ---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+  name: blog
+  labels:
+    app: blog
+spec:
+  rules:
+    - host: orange.kubernetes.jefftutors.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: blog
+              servicePort: 80
+    - host: indiana.kubernetes.jefftutors.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: blog
+              servicePort: 80
+            
