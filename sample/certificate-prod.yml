@@ -1,0 +1,19 @@
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: blog
+  namespace: default
+spec:
+  secretName: blog-tls-prod
+  issuerRef:
+    name: blog-letsncrypt-prod
+  commonName: orange.kubernetes.jefftutors.com
+  #dnsNames:
+  #- www.myapp.newtech.academy
+  acme:
+    config:
+    - http01:
+        ingress: blog
+      domains:
+      - orange.kubernetes.jefftutors.com
+      #- www.myapp.newtech.academy
