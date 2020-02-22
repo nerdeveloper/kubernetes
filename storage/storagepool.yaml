@@ -21,3 +21,16 @@ spec:
        - blockdevice-031e9e80329c72bc48dee3d2733a08fe 
        - blockdevice-10af5d691c90c27be0c79d90a9e4aa34
        - blockdevice-27e489767ba03f1d4896188d50754082
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: openebs-sc-statefulset
+  annotations:
+    openebs.io/cas-type: cstor
+    cas.openebs.io/config: |
+      - name: StoragePoolClaim
+        value: "cstor-disk-pool"
+      - name: ReplicaCount
+        value: "3"
+provisioner: openebs.io/provisioner-iscsi
