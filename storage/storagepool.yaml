@@ -14,8 +14,10 @@ metadata:
 spec:
   name: cstor-disk-pool
   type: disk
-  maxPools: 3
   poolSpec:
     poolType: striped
   blockDevices:
     blockDeviceList:
+       - blockdevice-031e9e80329c72bc48dee3d2733a08fe 
+       - blockdevice-10af5d691c90c27be0c79d90a9e4aa34
+       - blockdevice-27e489767ba03f1d4896188d50754082
