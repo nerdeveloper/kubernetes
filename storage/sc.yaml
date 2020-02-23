@@ -6,7 +6,7 @@ metadata:
     openebs.io/cas-type: cstor
     cas.openebs.io/config: |
       - name: StoragePoolClaim
-        value: "cstor-disk"
+        value: "cstor"
       - name: ReplicaCount
         value: "3"
 provisioner: openebs.io/provisioner-iscsi
