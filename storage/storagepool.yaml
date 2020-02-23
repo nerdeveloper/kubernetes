@@ -16,7 +16,7 @@ spec:
   maxPools: 3
   poolSpec:
     poolType: striped
-  disks:
-    diskList:
+  blockDevices:
+      blockDeviceList:
 
 ---
